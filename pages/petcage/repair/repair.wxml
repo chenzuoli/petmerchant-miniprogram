@@ -1,0 +1,64 @@
+<!--pages/petcage/repair/repair.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">宠笼报修</view>
+</cu-custom>
+<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+
+  <view class="cu-form-group">
+    <image class="pipilong" src="../../../images/pipilong.jpg"></image>
+  </view>
+  <view class="margin-top">
+    <form bindsubmit="submit">
+      <view class="cu-form-group margin-top">
+        <view class="title">请输入宠笼编码</view>
+        <input placeholder="" name='phone'></input>
+      </view>
+      <view class="cu-form-group margin-top">
+        <view class="title">故障类型</view>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">锁损坏</view>
+        <checkbox class="round"></checkbox>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">笼牌损坏</view>
+        <checkbox class="round"></checkbox>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">托盘损坏</view>
+        <checkbox class="round"></checkbox>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">笼子损坏</view>
+        <checkbox class="round"></checkbox>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">其他故障</view>
+        <checkbox class="round"></checkbox>
+      </view>
+
+      <view class="cu-form-group margin-top">
+        <view class="title">拍摄宠笼周围环境，便于维修师傅找笼</view>
+      </view>
+      <view class="cu-form-group">
+        <view class="action">
+          <view class="action-photo">
+            <block wx:for="{{picUrls}}">
+              <image src="{{item}}">
+                <icon type="cancel" size="18" color="red" bindtap="delPhoto" data-index="{{index}}" />
+              </image>
+            </block>
+            <text class="add" bindtap="clickPhoto">{{actionText}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="cu-form-group margin-top">
+        <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="请输入具体描述"></textarea>
+      </view>
+      <view class="cu-form-group">
+        <button class="btnSubmit" form-type="submit">提 交</button>
+      </view>
+    </form>
+  </view>
+</scroll-view>

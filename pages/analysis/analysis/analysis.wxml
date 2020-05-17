@@ -1,0 +1,69 @@
+<!--pages/analysis/analysis/analysis.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">数据分析</view>
+</cu-custom>
+<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+
+  <view class="cu-form-group">
+    <image class="pipilong" src="../../../images/pipilong.jpg"></image>
+  </view>
+  <view class="margin-top">
+    <view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+      <view class="cu-item {{menuArrow?'arrow':''}}">
+        <view class="content">
+          <text class="cuIcon-people text-grey"></text>
+          <text class="text-grey" bindtap="update_user_info">时间分布</text>
+        </view>
+      </view>
+      <view class="cu-item {{menuArrow?'arrow':''}}">
+        <view class="content">
+          <text class="cuIcon-emoji text-grey"></text>
+          <text class="text-grey" bindtap='update_pet_info'>宠物类型分布</text>
+        </view>
+      </view>
+      <view class="cu-item {{menuArrow?'arrow':''}}">
+        <button class="cu-btn content" open-type="contact">
+          <text class="cuIcon-service text-grey"></text>
+          <text class="text-grey">宠物品种分布</text>
+        </button>
+      </view>
+      <view class="cu-item {{menuArrow?'arrow':''}}">
+        <button class="cu-btn content" open-type="feedback">
+          <text class="cuIcon-writefill text-grey"></text>
+          <text class="text-grey">用户年龄分布</text>
+        </button>
+      </view>
+      <view class="cu-item {{menuArrow?'arrow':''}}">
+        <view class="content">
+          <text class="cuIcon-right text-grey"></text>
+          <text class="text-grey" bindtap='service_protocol'>用户性别分布</text>
+        </view>
+      </view>
+      <view class="cu-item {{menuArrow?'arrow':''}}">
+        <view class="content">
+          <text class="cuIcon-right text-grey"></text>
+          <text class="text-grey" bindtap='service_protocol'>宠物性别分布</text>
+        </view>
+      </view>
+      <view class="cu-item {{menuArrow?'arrow':''}}">
+        <view class="content">
+          <text class="cuIcon-right text-grey"></text>
+          <text class="text-grey" bindtap='service_protocol'>笼子大小使用分布</text>
+        </view>
+      </view>
+      <view class="cu-item {{menuArrow?'arrow':''}}">
+        <view class="content">
+          <text class="cuIcon-right text-grey"></text>
+          <text class="text-grey" bindtap='service_protocol'>宠物大小分布</text>
+        </view>
+      </view>
+      <view class="cu-item {{menuArrow?'arrow':''}}">
+        <view class="content">
+          <text class="cuIcon-right text-grey"></text>
+          <text class="text-grey" bindtap='service_protocol'>设备电量分布</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

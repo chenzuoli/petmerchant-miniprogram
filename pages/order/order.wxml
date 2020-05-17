@@ -1,0 +1,44 @@
+<!--pages/order/order.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">订单管理</view>
+</cu-custom>
+<scroll-view scroll-x="{{modalName==null}}" scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+
+  <view class="cu-form-group">
+    <image class="pipilong" src="../../images/pipilong.jpg"></image>
+  </view>
+  <view class="margin-top">
+    <view>
+      <view class="cu-form-group margin-top">
+        <input placeholder="客户手机号" name='phone'></input>
+      </view>
+      <view class="cu-form-group margin-top">
+        <input placeholder="日期" name='date'></input>
+      </view>
+      <view>
+        <button class="btn">搜索</button>
+      </view>
+    </view>
+    <view class="cu-timeline">
+      <view class="cu-time">昨天</view>
+      <view class="cu-item cur cuIcon-noticefill">
+        <view class="content bg-green shadow-blur">
+          <text>22:22</text> 【广州市】快件已到达地球
+        </view>
+      </view>
+      <view class="cu-time">昨天</view>
+      <view class="cu-item cur cuIcon-noticefill">
+        <view class="content bg-green shadow-blur">
+          <text>22:22</text> 【广州市】快件已到达地球
+        </view>
+      </view>
+      <view class="cu-time">昨天</view>
+      <view class="cu-item cur cuIcon-noticefill">
+        <view class="content bg-green shadow-blur">
+          <text>22:22</text> 【广州市】快件已到达地球
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

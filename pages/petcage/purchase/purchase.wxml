@@ -1,0 +1,57 @@
+<!--pages/petcage/purchase/purchase.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">宠笼采购</view>
+</cu-custom>
+<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+
+  <view class="cu-form-group">
+    <image class="pipilong" src="../../../images/pipilong.jpg"></image>
+  </view>
+  <view class="margin-top">
+    <form bindsubmit="submit">
+      <view class="cu-form-group margin-top">
+        <view class="title">请选择宠笼配件</view>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">机械锁</view>
+        <checkbox class="round"></checkbox>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">蓝牙智能锁</view>
+        <checkbox class="round"></checkbox>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">托盘</view>
+        <checkbox class="round"></checkbox>
+      </view>
+      <!-- <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">温控</view>
+        <checkbox class="round" disabled></checkbox>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">湿控</view>
+        <checkbox class="round" disabled></checkbox>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">紫外线消毒</view>
+        <checkbox class="round" disabled></checkbox>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">摄像头</view>
+        <checkbox class="round" disabled></checkbox>
+      </view>
+      <view class="cu-form-group">
+        <view style="margin-left:10px;" class="title">防晒屋顶</view>
+        <checkbox class="round" disabled></checkbox>
+      </view> -->
+
+      <view class="cu-form-group margin-top">
+        <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="如需其他配置，请输入"></textarea>
+      </view>
+      <view class="cu-form-group margin-top">
+        <button class="btnSubmit" form-type="submit">提 交</button>
+      </view>
+    </form>
+  </view>
+</scroll-view>

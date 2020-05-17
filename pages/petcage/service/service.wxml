@@ -1,0 +1,32 @@
+<!--pages/petcage/service/service.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">宠笼服务方式</view>
+</cu-custom>
+<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+
+  <view class="cu-form-group">
+    <image class="pipilong" src="../../../images/pipilong.jpg"></image>
+  </view>
+  <view class="margin-top">
+    <form bindsubmit="submit">
+      <view class="cu-form-group margin-top">
+        <view class="title">请选择服务方式</view>
+      </view>
+      <radio-group class="block">
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">免费</view>
+          <radio class="radio" checked></radio>
+        </view>
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">付费</view>
+          <radio class="radio" disabled></radio>
+        </view>
+      </radio-group>
+
+      <view class="cu-form-group margin-top">
+        <button class="btnSubmit" form-type="submit">提 交</button>
+      </view>
+    </form>
+  </view>
+</scroll-view>
