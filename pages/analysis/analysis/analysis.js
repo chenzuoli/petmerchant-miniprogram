@@ -14,53 +14,77 @@ Page({
   onLoad: function (options) {
 
   },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
-
+  time_dis: function(){
+    wx.navigateTo({
+      url: '../time_distributed/time_distributed',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-
+  pet_type_dis: function(){
+    wx.navigateTo({
+      url: '../pet_type/pet_type',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
+  pet_variety_dis: function(){
+    wx.navigateTo({
+      url: '../pet_variety/pet_variety',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
+  user_age_dis: function(){
+    wx.navigateTo({
+      url: '../user_age/user_age',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
+  user_gender_dis: function() {
+    wx.navigateTo({
+      url: '../user_gender/user_gender',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
+  pet_gender_dis: function(){
+    wx.navigateTo({
+      url: '../pet_gender/pet_gender',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
+  petcage_size_usage_dis: function(){
+    wx.navigateTo({
+      url: '../petcage_size_usage/petcage_size_usage',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  pet_size_dis: function(){
+    wx.navigateTo({
+      url: '../pet_size/pet_size',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  petcage_power_dis: function(){
+    wx.navigateTo({
+      url: '../petcage_power/petcage_power',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
+
 })

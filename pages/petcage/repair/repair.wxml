@@ -12,32 +12,38 @@
     <form bindsubmit="submit">
       <view class="cu-form-group margin-top">
         <view class="title">请输入宠笼编码</view>
-        <input placeholder="" name='phone'></input>
+        <input bindinput="changeNum" placeholder="" name='petcage_id'></input>
       </view>
+
       <view class="cu-form-group margin-top">
         <view class="title">故障类型</view>
       </view>
-      <view class="cu-form-group">
-        <view style="margin-left:10px;" class="title">锁损坏</view>
-        <checkbox class="round"></checkbox>
-      </view>
-      <view class="cu-form-group">
-        <view style="margin-left:10px;" class="title">笼牌损坏</view>
-        <checkbox class="round"></checkbox>
-      </view>
-      <view class="cu-form-group">
-        <view style="margin-left:10px;" class="title">托盘损坏</view>
-        <checkbox class="round"></checkbox>
-      </view>
-      <view class="cu-form-group">
-        <view style="margin-left:10px;" class="title">笼子损坏</view>
-        <checkbox class="round"></checkbox>
-      </view>
-      <view class="cu-form-group">
-        <view style="margin-left:10px;" class="title">其他故障</view>
-        <checkbox class="round"></checkbox>
-      </view>
-
+      <checkbox-group bindchange="checkboxChange">
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">私锁私用</view>
+          <checkbox name="damage_type" class="round" value="1"></checkbox>
+        </view>
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">锁损坏</view>
+          <checkbox name="damage_type" class="round" value="2"></checkbox>
+        </view>
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">笼牌损坏</view>
+          <checkbox name="damage_type" class="round" value="3"></checkbox>
+        </view>
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">托盘损坏</view>
+          <checkbox name="damage_type" class="round" value="6"></checkbox>
+        </view>
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">笼子损坏</view>
+          <checkbox name="damage_type" class="round" value="4"></checkbox>
+        </view>
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">其他故障</view>
+          <checkbox name="damage_type" class="round" value="5"></checkbox>
+        </view>
+      </checkbox-group>
       <view class="cu-form-group margin-top">
         <view class="title">拍摄宠笼周围环境，便于维修师傅找笼</view>
       </view>
@@ -54,9 +60,9 @@
         </view>
       </view>
       <view class="cu-form-group margin-top">
-        <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="请输入具体描述"></textarea>
+        <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="changeDesc" placeholder="请输入具体描述"></textarea>
       </view>
-      <view class="cu-form-group">
+      <view class="cu-form-group margin-top">
         <button class="btnSubmit" form-type="submit">提 交</button>
       </view>
     </form>

@@ -14,53 +14,44 @@ Page({
   onLoad: function(options) {
 
   },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function() {
-
+  repair: function() {
+    wx.navigateTo({
+      url: '../repair/repair',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function() {
-
+  manage: function() {
+    wx.navigateTo({
+      url: '../manage/manage',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function() {
-
+  purchase: function() {
+    wx.navigateTo({
+      url: '../purchase/purchase',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function() {
-
+  upgrade: function() {
+    wx.navigateTo({
+      url: '../upgrade/upgrade',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function() {
-
+  service: function() {
+    wx.navigateTo({
+      url: '../service/service',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
 })

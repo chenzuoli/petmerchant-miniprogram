@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chenzuoli/pipilong-merchant.git"
+    "url": "git+https://github.com/chenzuoli/petmerchant-miniprogram.git"
   },
   "author": "chenzuoli",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chenzuoli/pipilong-merchant/issues"
+    "url": "https://github.com/chenzuoli/petmerchant-miniprogram/issues"
   },
-  "homepage": "https://github.com/chenzuoli/pipilong-merchant#readme"
+  "homepage": "https://github.com/chenzuoli/petmerchant-miniprogram#readme"
 }

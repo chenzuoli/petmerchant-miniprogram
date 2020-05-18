@@ -9,40 +9,42 @@
     <image class="pipilong" src="../../images/pipilong.jpg"></image>
   </view>
   <view class="margin-top">
-    <view>
+    <form bindsubmit="search">
       <view class="cu-form-group margin-top">
         <input placeholder="客户手机号" name='phone'></input>
       </view>
-      <view class="cu-form-group margin-top">
-        <input placeholder="日期" name='date'></input>
+      <view class="cu-form-group">
+        <view class="title">日期</view>
+        <picker name='date' mode="date" value="{{date}}" start="1980-09-01" end="{{now}}" bindchange="DateChange">
+          <view class="picker">{{date}}</view>
+        </picker>
       </view>
       <view>
-        <button class="btn">搜索</button>
+        <button class="btn" form-type="submit">搜 索</button>
       </view>
-    </view>
+    </form>
     <view class="table">
       <view class="tr bg-w">
-        <view class="th">head1</view>
-        <view class="th">head2</view>
-        <view class="th ">head3</view>
-        <view class="th ">head4</view>
-        <view class="th ">head5</view>
-
+        <view class="th">序号</view>
+        <view class="th">客户手机号</view>
+        <view class="th">宠物类型</view>
+        <view class="th">开始时间</view>
+        <view class="th">结束时间</view>
       </view>
       <block wx:for="{{listData}}" wx:key="{[code]}">
         <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
-          <view class="td">{{item.code}}</view>
-          <view class="td">{{item.text}}</view>
-          <view class="td">{{item.type}}</view>
-          <view class="td">{{item.type}}</view>
-          <view class="td">{{item.type}}</view>
+          <view class="td">{{index}}</view>
+          <view class="td">{{item.phone}}</view>
+          <view class="td">{{item.pet_type}}</view>
+          <view class="td">{{item.start_time}}</view>
+          <view class="td">{{item.end_time}}</view>
         </view>
         <view class="tr" wx:else>
-          <view class="td">{{item.code}}</view>
-          <view class="td">{{item.text}}</view>
-          <view class="td">{{item.type}}</view>
-          <view class="td">{{item.type}}</view>
-          <view class="td">{{item.type}}</view>
+          <view class="td">{{index}}</view>
+          <view class="td">{{item.phone}}</view>
+          <view class="td">{{item.pet_type}}</view>
+          <view class="td">{{item.start_time}}</view>
+          <view class="td">{{item.end_time}}</view>
         </view>
       </block>
     </view>

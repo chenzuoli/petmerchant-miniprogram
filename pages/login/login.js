@@ -1,6 +1,6 @@
 // pages/login/login.js
 var API_URL = 'https://www.wetech.top'
-var wx_login_url = "https://wetech.top:7443/petcage/wx_login"
+var login_url = "https://wetech.top:7553/petcage/merchant/login"
 const app = getApp()
 
 Page({
@@ -101,32 +101,33 @@ Page({
     }
   },
   //处理login的触发事件
-  login: function(e) {
-    console.log(this.data)
+  submit: function(e) {
     wx.request({
-      url: 'https://wetech.top:7443/petcage/login?phone=' + this.data.account + '&pwd=' + this.data.password,
+      url: login_url,
       //定义传到后台的数据
       data: {
         //从全局变量data中获取数据
-        phone: this.data.account,
-        pwd: this.data.password
+        phone: e.detail.value.phone,
+        pwd: e.detail.value.pwd
       },
-      method: 'post', //定义传到后台接受的是post方法还是get方法
+      method: 'get', //定义传到后台接受的是post方法还是get方法
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded'
       },
       success: function(res) {
         console.log("调用API成功");
-        console.log(res)
+        console.log(res);
         console.log(res.data.message);
-        if (res.data == true) {
+        if (res.data.status == '200') {
           wx.showToast({
             title: '登陆成功',
             icon: 'success',
             duration: 2000
           })
+          wx.setStorageSync("token", res.data.data)
+          wx.setStorageSync('phone', e.detail.value.phone)
           wx.navigateTo({
-            url: '../map/map',
+            url: '../index/index',
           })
         } else {
           wx.showModal({

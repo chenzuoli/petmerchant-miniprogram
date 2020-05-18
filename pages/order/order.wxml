@@ -13,8 +13,11 @@
       <view class="cu-form-group margin-top">
         <input placeholder="客户手机号" name='phone'></input>
       </view>
-      <view class="cu-form-group margin-top">
-        <input placeholder="日期" name='date'></input>
+      <view class="cu-form-group">
+        <view class="title">日期</view>
+        <picker name='date' mode="date" value="{{date}}" start="1980-09-01" end="{{now}}" bindchange="DateChange">
+          <view class="picker">{{date}}</view>
+        </picker>
       </view>
       <view>
         <button class="btn">搜索</button>

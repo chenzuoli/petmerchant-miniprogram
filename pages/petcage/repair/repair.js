@@ -1,69 +1,219 @@
 // pages/petcage/repair/repair.js
-Page({
+var add_feedback_url = 'https://wetech.top:7553/petcage/merchant/add_feedback';
+var upload_file_url = 'https://wetech.top:7553/petcage/merchant/upload_file';
 
+Page({
   /**
    * Page initial data
    */
   data: {
+    token: '',
     actionText: "拍摄/相册",
     picUrls: [],
     checkboxValues: [],
-    itemsValue: [],
+    longitude: "",
+    latitude: "",
+    inputValue: {
+      num: 0,
+      desc: ""
+    },
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function(options) {
-
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function() {
-
+  checkboxChange: function(e) {
+    console.log(e)
+    var _value = e.detail.value;
+    if (_value.length == 0) {
+      this.setData({
+        checkboxValues: [],
+      })
+    } else {
+      this.setData({
+        checkboxValues: _value,
+      })
+    }
   },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function() {
-
+  clickPhoto: function() {
+    wx.chooseImage({
+      success: (res) => {
+        console.log(res);
+        var _picUrls = this.data.picUrls;
+        var tfs = res.tempFilePaths;
+        for (let temp of tfs) {
+          _picUrls.push(temp);
+        }
+        this.setData({
+          picUrls: _picUrls,
+          actionText: "+"
+        })
+      },
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function() {
-
+  delPhoto: function(e) {
+    console.log(e);
+    let index = e.target.dataset.index;
+    let _picUrls = this.data.picUrls;
+    _picUrls.splice(index, 1);
+    this.setData({
+      picUrls: _picUrls
+    })
+    if (_picUrls.length == 0) {
+      this.setData({
+        actionText: "拍摄/相册"
+      })
+    }
   },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function() {
-
+  changeNum: function(e) {
+    this.setData({
+      inputValue: {
+        num: e.detail.value,
+        desc: this.data.inputValue.desc
+      }
+    })
   },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function() {
-
+  changeDesc: function(e) {
+    this.setData({
+      inputValue: {
+        num: this.data.inputValue.num,
+        desc: e.detail.value
+      }
+    })
   },
+  submit: async function() {
+    console.log(this.data)
+    var that = this;
 
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function() {
+    // 获取用户地理位置
+    await that.getUserLocation()
+    // 上传故障图片
+    // await that.uploadFile()
 
+    if (that.data.checkboxValues.length > 0) {
+      await that.addFeedback()
+      setTimeout(() => {
+        wx.redirectTo({
+          url: '../petcage/petcage',
+        })
+      }, 1000)
+    } else {
+      wx.showModal({
+        title: '请填写故障种类',
+        content: '',
+        confirmText: '继续填写',
+        cancelText: '返回',
+        success: (res) => {
+          if (res.confirm) {
+            console.log(res);
+          } else {
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+        }
+      })
+    }
   },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function() {
-
+  getUserLocation: function() {
+    var that = this
+    return new Promise((resolve, reject) => {
+      wx.getLocation({
+        type: 'gcj02',
+        success(res) {
+          console.log(res)
+          var lati = res.latitude
+          var longi = res.longitude
+          console.log('用户经纬度：' + lati + ',' + longi)
+          that.setData({
+            longitude: longi,
+            latitude: lati
+          })
+          resolve(res)
+        },
+        fail: function(err) {
+          console.log("获取位置失败");
+          console.log(err)
+          reject(err)
+        }
+      })
+    })
+  },
+  uploadFile: function() {
+    var that = this
+    return new Promise((resolve, reject) => {
+      var pics = that.data.picUrls
+      for (var i = 0; i < pics.length; i++) {
+        wx.uploadFile({
+          url: upload_file_url,
+          filePath: pics[i],
+          name: 'avatarFile',
+          header: {
+            'content-type': 'multipart/form-data',
+            'token': that.data.token
+          }, // 设置请求的 header
+          formData: {
+            'guid': "procomment"
+          }, // HTTP 请求中其他额外的 form data
+          success: function(res) {
+            console.log("上传成功")
+            var picture = JSON.parse(res.data)
+            console.log(res)
+            that.data.picUrls[i] = picture.data
+            resolve(res)
+          },
+          fail: function(err) {
+            console.log("上传失败")
+            console.log(err)
+            reject(err)
+          }
+        })
+      }
+    })
+  },
+  addFeedback: function() {
+    var that = this
+    console.log(that.data)
+    var feedback_contents = that.data.checkboxValues.join(",")
+    return new Promise((resolve, reject) => {
+      // 添加故障维修
+      wx.request({
+        url: add_feedback_url,
+        data: {
+          petcage_id: that.data.inputValue.num,
+          feedback_content: feedback_contents,
+          pictures: that.data.picUrls.join(','),
+          latitude: that.data.latitude,
+          longitude: that.data.longitude,
+          description: that.data.inputValue.desc
+        },
+        method: 'post', //定义传到后台接受的是post方法还是get方法
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "token": that.data.token
+        },
+        success: (res) => {
+          wx.showToast({
+            title: '提交成功',
+            icon: 'success',
+            duration: 1000
+          })
+          console.log("添加设备故障成功")
+          console.log(res)
+          resolve(res)
+        },
+        fail(err) {
+          console.log("添加设备故障失败")
+          console.log(err)
+          reject(err)
+        }
+      })
+    })
   }
 })

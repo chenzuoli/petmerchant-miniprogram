@@ -1,66 +1,74 @@
 // pages/petcage/purchase/purchase.js
-Page({
+var purchase_petcage_url = "https://wetech.top:7553/petcage/merchant/add_petcage"
 
+Page({
   /**
    * Page initial data
    */
   data: {
-
+    token: '',
+    checkboxValues: [],
+    desc: ""
   },
 
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
-
+  checkboxChange: function(e) {
+    console.log(e)
+    var _value = e.detail.value;
+    if (_value.length == 0) {
+      this.setData({
+        checkboxValues: [],
+      })
+    } else {
+      this.setData({
+        checkboxValues: _value,
+      })
+    }
   },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-
+  changeDesc: function(e) {
+    this.setData({
+      desc: e.detail.value
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
+  submit: function() {
+    var that = this
+    console.log(that.data)
+    wx.request({
+      url: purchase_petcage_url,
+      data: {
+        phone: wx.getStorageSync('phone'),
+        accessory_ids: that.data.checkboxValues.join(',')
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'token': that.data.token
+      }, // 设置请求的 header
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        console.log(res)
+        if (res.status = '200') {
+          wx.showToast({
+            title: '提交成功',
+            icon: 'success',
+            duration: 2000
+          })
+          wx.navigateTo({
+            url: '../petcage/petcage',
+          })
+        }
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
 })

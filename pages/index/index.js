@@ -14,53 +14,30 @@ Page({
   onLoad: function (options) {
 
   },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
-
+  analysis: function(){
+    wx.navigateTo({
+      url: '../analysis/analysis/analysis',
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-
+  petcage: function(){
+    wx.navigateTo({
+      url: '../petcage/petcage/petcage',
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
+  user: function(){
+    wx.navigateTo({
+      url: '../user/user',
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
+  customer: function(){
+    wx.navigateTo({
+      url: '../customer/customer',
+    })
   },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
+  order: function(){
+    wx.navigateTo({
+      url: '../order/order',
+    })
   }
+
 })

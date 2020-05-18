@@ -13,19 +13,21 @@
       <view class="cu-form-group margin-top">
         <view class="title">请选择宠笼配件</view>
       </view>
-      <view class="cu-form-group">
-        <view style="margin-left:10px;" class="title">机械锁</view>
-        <checkbox class="round"></checkbox>
-      </view>
-      <view class="cu-form-group">
-        <view style="margin-left:10px;" class="title">蓝牙智能锁</view>
-        <checkbox class="round"></checkbox>
-      </view>
-      <view class="cu-form-group">
-        <view style="margin-left:10px;" class="title">托盘</view>
-        <checkbox class="round"></checkbox>
-      </view>
-      <!-- <view class="cu-form-group">
+      <checkbox-group bindchange="checkboxChange">
+
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">机械锁</view>
+          <checkbox value="1" class="round"></checkbox>
+        </view>
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">蓝牙智能锁</view>
+          <checkbox value="2" class="round"></checkbox>
+        </view>
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">托盘</view>
+          <checkbox value="3" class="round"></checkbox>
+        </view>
+        <!-- <view class="cu-form-group">
         <view style="margin-left:10px;" class="title">温控</view>
         <checkbox class="round" disabled></checkbox>
       </view>
@@ -46,8 +48,10 @@
         <checkbox class="round" disabled></checkbox>
       </view> -->
 
+      </checkbox-group>
+
       <view class="cu-form-group margin-top">
-        <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="如需其他配置，请输入"></textarea>
+        <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="changeDesc" placeholder="如需其他配置，请输入"></textarea>
       </view>
       <view class="cu-form-group margin-top">
         <button class="btnSubmit" form-type="submit">提 交</button>

@@ -20,7 +20,7 @@ App({
       union_id: "",
       token: "",
     },
-    api
+    api,
   },
   onLaunch: function () {
     //调用API从本地缓存中获取数据
@@ -33,6 +33,7 @@ App({
         this.globalData.StatusBar = e.statusBarHeight;
         let custom = wx.getMenuButtonBoundingClientRect();
         this.globalData.Custom = custom;  
+        this.globalData.windowWidth = e.windowHeight;
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
       }
     })
@@ -87,25 +88,6 @@ App({
         }
       }
     })
-
-    // var isFirst = wx.getStorageSync('isFirst')
-    // if (isFirst) {
-    //   wx.navigateTo({
-    //     url: '/pages/map/map',
-    //   })
-    // } else {
-    //   wx.navigateTo({
-    //     // url: '/pages/login/login'
-    //     // url: '/pages/index/index'
-    //     // url: "/pages/analysis/analysis/analysis"
-    //     // url: '/pages/petcage/petcage/petcage'
-    //     // url: '/pages/customer/customer'
-    //     // url: '/pages/order/order'
-    //     // url: '/pages/petcage/repair/repair'
-    //     // url: '/pages/petcage/purchase/purchase'
-    //     url: '/pages/petcage/service/service'
-    //   })
-    // }
   },
   getUserInfo: function (cb) {
     var that = this
