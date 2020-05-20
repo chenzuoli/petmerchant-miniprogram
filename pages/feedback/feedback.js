@@ -191,7 +191,7 @@ Page({
         url: add_feedback_url + "?order_id=" + that.data.order_id + "&open_id=" + open_id + "&feedback_type=1&feedback_content=" + that.data.info + "&satisfy_grade=" + that.data.flag + "&pictures=" + that.data.picUrls.join(',') + "&latitude=" + that.data.latitude + "&longitude=" + that.data.longitude + "&petcage_id=" + that.data.inputValue.num + "&description=" + that.data.inputValue.desc,
         method: 'post', //定义传到后台接受的是post方法还是get方法
         header: {
-          'content-type': 'application/json' // 默认值
+          "Content-Type": "application/x-www-form-urlencoded"
         },
         success(res) {
           if (res.data > 0) {

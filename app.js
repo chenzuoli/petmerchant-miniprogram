@@ -47,7 +47,7 @@ App({
           url: login_url + "?js_code=" + res.code,
           method: 'POST',
           header: {
-            'content-type': 'application/json' // 默认值
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           data: {
             js_code: res.code
