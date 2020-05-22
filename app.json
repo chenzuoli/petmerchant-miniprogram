@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/petcage/petcage/petcage",
     "pages/analysis/analysis/analysis",
-    "pages/login/login",
     "pages/feedback/feedback",
     "pages/logs/logs",
     "pages/register/register",
