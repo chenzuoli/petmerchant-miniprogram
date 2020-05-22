@@ -1,5 +1,5 @@
 // pages/petcage/purchase/purchase.js
-var purchase_petcage_url = "https://wetech.top:7553/petcage/merchant/add_petcage"
+var purchase_petcage_url = "https://localhost:7553/petcage/merchant/add_petcage"
 
 Page({
   /**
@@ -8,6 +8,7 @@ Page({
   data: {
     token: '',
     checkboxValues: [],
+    radioboxValue: "",
     desc: ""
   },
 
@@ -33,6 +34,19 @@ Page({
       })
     }
   },
+  radioboxChange: function(e) {
+    console.log(e)
+    var _value = e.detail.value;
+    if (_value.length == 0) {
+      this.setData({
+        radioboxValue: "",
+      })
+    } else {
+      this.setData({
+        radioboxValue: _value,
+      })
+    }
+  },
   changeDesc: function(e) {
     this.setData({
       desc: e.detail.value
@@ -45,7 +59,8 @@ Page({
       url: purchase_petcage_url,
       data: {
         phone: wx.getStorageSync('phone'),
-        accessory_ids: that.data.checkboxValues.join(',')
+        accessory_ids: that.data.checkboxValues.join(','),
+        size: that.data.radioboxValue
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -65,6 +80,19 @@ Page({
           wx.navigateTo({
             url: '../petcage/petcage',
           })
+        } else {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'warn',
+            image: '',
+            duration: 1500,
+            mask: false,
+            success: (result)=>{
+              
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
         }
       },
       fail: function(res) {},

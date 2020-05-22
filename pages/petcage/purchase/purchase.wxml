@@ -54,6 +54,23 @@
         <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="changeDesc" placeholder="如需其他配置，请输入"></textarea>
       </view>
       <view class="cu-form-group margin-top">
+        <view class="title">请选择宠笼大小</view>
+      </view>
+      <radio-group class="block" bindchange="radioboxChange">
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">大</view>
+          <radio value="3" class="radio"></radio>
+        </view>
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">中</view>
+          <radio value="2" class="radio"></radio>
+        </view>
+        <view class="cu-form-group">
+          <view style="margin-left:10px;" class="title">小</view>
+          <radio value="1" class="radio"></radio>
+        </view>
+      </radio-group>
+      <view class="cu-form-group margin-top">
         <button class="btnSubmit" form-type="submit">提 交</button>
       </view>
     </form>

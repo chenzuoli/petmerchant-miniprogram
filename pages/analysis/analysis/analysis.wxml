@@ -28,12 +28,7 @@
           <text class="text-grey" bindtap='pet_variety_dis'>宠物品种分布</text>
         </button>
       </view>
-      <view class="cu-item {{menuArrow?'arrow':''}}">
-        <button class="cu-btn content">
-          <text class="cuIcon-writefill text-grey"></text>
-          <text class="text-grey" bindtap='user_age_dis'>用户年龄分布</text>
-        </button>
-      </view>
+      
       <view class="cu-item {{menuArrow?'arrow':''}}">
         <view class="content">
           <text class="cuIcon-right text-grey"></text>
@@ -46,24 +41,14 @@
           <text class="text-grey" bindtap='pet_gender_dis'>宠物性别分布</text>
         </view>
       </view>
-      <view class="cu-item {{menuArrow?'arrow':''}}">
-        <view class="content">
-          <text class="cuIcon-right text-grey"></text>
-          <text class="text-grey" bindtap='petcage_size_usage_dis'>笼子大小使用分布</text>
-        </view>
-      </view>
+      
       <view class="cu-item {{menuArrow?'arrow':''}}">
         <view class="content">
           <text class="cuIcon-right text-grey"></text>
           <text class="text-grey" bindtap='pet_size_dis'>宠物大小分布</text>
         </view>
       </view>
-      <view class="cu-item {{menuArrow?'arrow':''}}">
-        <view class="content">
-          <text class="cuIcon-right text-grey"></text>
-          <text class="text-grey" bindtap='petcage_power_dis'>设备电量分布</text>
-        </view>
-      </view>
+      
     </view>
   </view>
 </scroll-view>

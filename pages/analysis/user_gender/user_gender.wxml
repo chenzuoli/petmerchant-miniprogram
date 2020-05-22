@@ -1,6 +1,6 @@
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
     <view slot="backText">返回</view>
-    <view slot="content">宠物大小分布</view>
+    <view slot="content">用户性别分布</view>
 </cu-custom>
 <scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
     <view class="cu-form-group">

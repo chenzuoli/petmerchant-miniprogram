@@ -1,4 +1,4 @@
-/* pages/analysis/pet_size/pet_size.wxss */
+/* pages/analysis/user_gender/user_gender.wxss */
 .page {
     height: 100vh;
     width: 100vw;

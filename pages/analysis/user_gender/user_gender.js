@@ -1,9 +1,9 @@
 var wxCharts = require('../../../wxcharts/wxcharts.js');
 var pieChart = null;
-var pet_size_dis_url = "https://localhost:7553/petcage/merchant/pet_size_dis"
+var user_gender_dis_url = "https://localhost:7553/petcage/merchant/user_gender_dis"
 Page({
   data: {
-    pet_size_data: []
+    user_gender_data: []
   },
   touchHandler: function (e) {
     console.log(pieChart.getCurrentDataIndex(e));
@@ -22,7 +22,7 @@ Page({
       animation: true,
       canvasId: 'pieCanvas',
       type: 'pie',
-      series: this.data.pet_size_data,
+      series: this.data.user_gender_data,
       width: windowWidth,
       height: 300,
       dataLabel: true,
@@ -33,7 +33,7 @@ Page({
     let token = wx.getStorageSync("token");
     return new Promise((resolve, reject) => {
       wx.request({
-        url: pet_size_dis_url,
+        url: user_gender_dis_url,
         data: {},
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -45,7 +45,7 @@ Page({
         success: (result) => {
           console.log(result.data)
           that.setData({
-            pet_size_data: result.data.data
+            user_gender_data: result.data.data
           })
           resolve(result)
         },

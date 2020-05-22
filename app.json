@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/login/login",
+    "pages/index/index",
     "pages/petcage/petcage/petcage",
     "pages/analysis/analysis/analysis",
+    "pages/login/login",
     "pages/feedback/feedback",
     "pages/logs/logs",
     "pages/register/register",
@@ -14,7 +15,6 @@
     "pages/pet_index/pet_list/pet_list",
     "pages/protocol/protocol",
     "pages/pet_index/pet_add/pet_add",
-    "pages/index/index",
     "pages/customer/customer",
     "pages/order/order",
     "pages/petcage/repair/repair",
@@ -22,7 +22,11 @@
     "pages/petcage/service/service",
     "pages/analysis/time_distributed/time_distributed",
     "pages/analysis/pet_gender/pet_gender",
-    "pages/analysis/pet_size/pet_size"
+    "pages/analysis/pet_size/pet_size",
+    "pages/analysis/pet_type/pet_type",
+    "pages/analysis/pet_variety/pet_variety",
+    "pages/analysis/user_gender/user_gender",
+    "pages/petcage/manage/manage"
   ],
   "window": {
     "backgroundTextStyle": "light",

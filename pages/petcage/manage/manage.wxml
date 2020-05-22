@@ -1,0 +1,38 @@
+<!--pages/petcage/manage/manage.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">宠笼维护</view>
+</cu-custom>
+<scroll-view scroll-x="{{modalName==null}}" scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+
+  <view class="cu-form-group">
+    <image class="pipilong" src="../../../images/pipilong.jpg"></image>
+  </view>
+  <view class="margin-top">
+    <view class="table">
+      <view class="tr bg-w">
+        <view class="th">序号</view>
+        <view class="th">设备名称</view>
+        <view class="th">配件</view>
+        <view class="th">剩余电量</view>
+        <view class="th">大小</view>
+      </view>
+      <block wx:for="{{listData}}" wx:key="{[code]}">
+        <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+          <view class="td">{{index}}</view>
+          <view class="td">{{item.device_name}}</view>
+          <view class="td">{{item.accessory_names}}</view>
+          <view class="td">{{item.kwh}}</view>
+          <view class="td">{{item.size}}</view>
+        </view>
+        <view class="tr" wx:else>
+          <view class="td">{{index}}</view>
+          <view class="td">{{item.device_name}}</view>
+          <view class="td">{{item.accessory_names}}</view>
+          <view class="td">{{item.kwh}}</view>
+          <view class="td">{{item.size}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+</scroll-view>

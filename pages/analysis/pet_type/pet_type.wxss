@@ -1,5 +1,4 @@
-/* pages/analysis/time_distributed/time_distributed.wxss */
-
+/* pages/analysis/pet_type/type.wxss */
 .page {
   height: 100vh;
   width: 100vw;
@@ -30,6 +29,11 @@
 
 .switch-music::before {
   content: "\e6db";
+}
+
+.canvas {
+    margin-top: -100px;
+    height: 300px;
 }
 
 .update {

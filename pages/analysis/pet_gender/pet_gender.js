@@ -1,66 +1,63 @@
-// pages/analysis/pet_gender/pet_gender.js
+var wxCharts = require('../../../wxcharts/wxcharts.js');
+var pieChart = null;
+var pet_gender_dis_url = "https://localhost:7553/petcage/merchant/pet_gender_dis"
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-
+    pet_gender_data: []
   },
-
-  /**
-   * Lifecycle function--Called when page load
-   */
-  onLoad: function (options) {
-
+  touchHandler: function (e) {
+    console.log(pieChart.getCurrentDataIndex(e));
   },
+  onLoad: async function (e) {
+    var windowWidth = 320;
+    try {
+      var res = wx.getSystemInfoSync();
+      windowWidth = res.windowWidth;
+    } catch (e) {
+      console.error('getSystemInfoSync failed!');
+    }
+    await this.getData();
 
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
-
+    pieChart = new wxCharts({
+      animation: true,
+      canvasId: 'pieCanvas',
+      type: 'pie',
+      series: this.data.pet_gender_data,
+      width: windowWidth,
+      height: 300,
+      dataLabel: true,
+    });
   },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-
+  getData: function () {
+    var that = this
+    let token = wx.getStorageSync("token");
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: pet_gender_dis_url,
+        data: {},
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "token": token
+        },
+        method: 'GET',
+        dataType: 'json',
+        responseType: 'text',
+        success: (result) => {
+          console.log(result.data)
+          that.setData({
+            pet_gender_data: result.data.data
+          })
+          resolve(result)
+        },
+        fail: (err) => {
+          reject(err)
+        },
+        complete: () => { }
+      });
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
+  updateData: function () {
+    var that = this
+    that.getData()
   }
-})
+});

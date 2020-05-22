@@ -11,7 +11,7 @@
     <view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
       <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
       <view class="cu-form-group">
-        <button class="btnSubmit" bindtap="updateData">更新数据</button>
+        <button class="update" bindtap="updateData">更新数据</button>
       </view>
     </view>
   </view>
