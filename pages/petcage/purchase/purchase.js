@@ -1,5 +1,5 @@
 // pages/petcage/purchase/purchase.js
-var purchase_petcage_url = "https://localhost:7553/petcage/merchant/add_petcage"
+var purchase_petcage_url = "https://pipilong.pet:7553/petcage/merchant/add_petcage"
 
 Page({
   /**

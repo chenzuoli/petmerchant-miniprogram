@@ -28,12 +28,12 @@
           <text class="text-grey" bindtap='purchase'>宠笼采购</text>
         </view>
       </view>
-      <view class="cu-item {{menuArrow?'arrow':''}}">
+      <!-- <view class="cu-item {{menuArrow?'arrow':''}}">
         <view class="content">
           <text class="cuIcon-writefill text-grey"></text>
           <text class="text-grey" bindtap='upgrade'>宠笼升级</text>
         </view>
-      </view>
+      </view> -->
       <view class="cu-item {{menuArrow?'arrow':''}}">
         <view class="content">
           <text class="cuIcon-right text-grey"></text>

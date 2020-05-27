@@ -1,6 +1,6 @@
 var wxCharts = require('../../../wxcharts/wxcharts.js');
 var pieChart = null;
-var pet_gender_dis_url = "https://localhost:7553/petcage/merchant/pet_gender_dis"
+var pet_gender_dis_url = "https://pipilong.pet:7553/petcage/merchant/pet_gender_dis"
 Page({
   data: {
     pet_gender_data: []

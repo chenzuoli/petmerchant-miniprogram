@@ -1,5 +1,5 @@
 // pages/petcage/manage/manage.js
-var get_petcage_list = "https://localhost:7553/petcage/merchant/petcage_list"
+var get_petcage_list = "https://pipilong.pet:7553/petcage/merchant/petcage_list"
 
 Page({
   /**

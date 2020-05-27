@@ -2,7 +2,7 @@
 
 const api = require('./api/api.js')
 
-var login_url = 'https://wetech.top:7443/petcage/open_id'
+var login_url = 'https://pipilong.pet:7443/petcage/open_id'
 
 function promisify(api) {
   return (opt, ...arg) => {
@@ -44,7 +44,7 @@ App({
       success: res => {
         console.log("js_code: " + res.code)
         wx.request({
-          url: login_url + "?js_code=" + res.code,
+          url: login_url,
           method: 'POST',
           header: {
             "Content-Type": "application/x-www-form-urlencoded"

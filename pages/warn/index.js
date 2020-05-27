@@ -1,7 +1,7 @@
 // pages/warn/index.js
-var repair_url = 'https://wetech.top:7443/petcage/getDamageType';
-var add_feedback_url = 'https://wetech.top:7443/petcage/add_feedback';
-var upload_file_url = 'https://wetech.top:7443/petcage/upload_file';
+var repair_url = 'https://pipilong.pet:7443/petcage/getDamageType';
+var add_feedback_url = 'https://pipilong.pet:7443/petcage/add_feedback';
+var upload_file_url = 'https://pipilong.pet:7443/petcage/upload_file';
 const app = getApp()
 
 Page({

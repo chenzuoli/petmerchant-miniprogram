@@ -1,5 +1,5 @@
 // pages/customer/customer.js
-var get_order_list = "https://wetech.top:7553/petcage/merchant/order_list"
+var get_order_list = "https://pipilong.pet:7553/petcage/merchant/order_list"
 var util = require('../../utils/util.js')
 
 Page({

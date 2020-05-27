@@ -1,6 +1,6 @@
 // pages/petcage/repair/repair.js
-var add_feedback_url = 'https://wetech.top:7553/petcage/merchant/add_feedback';
-var upload_file_url = 'https://wetech.top:7553/petcage/merchant/upload_file';
+var add_feedback_url = 'https://pipilong.pet:7553/petcage/merchant/add_feedback';
+var upload_file_url = 'https://pipilong.pet:7553/petcage/merchant/upload_file';
 
 Page({
   /**

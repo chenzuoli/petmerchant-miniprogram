@@ -1,5 +1,5 @@
 var wxCharts = require('../../../wxcharts/wxcharts.js');
-var time_distributed_url = "https://localhost:7553/petcage/merchant/time_distributed_charts";
+var time_distributed_url = "https://pipilong.pet:7553/petcage/merchant/time_distributed_charts";
 var app = getApp();
 var lineChart = null;
 var token = '';

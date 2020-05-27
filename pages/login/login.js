@@ -1,6 +1,6 @@
 // pages/login/login.js
-var API_URL = 'https://www.wetech.top'
-var login_url = "https://localhost:7553/petcage/merchant/login"
+var API_URL = 'https://www.pipilong.pet'
+var login_url = "https://pipilong.pet:7553/petcage/merchant/login"
 const app = getApp()
 
 Page({

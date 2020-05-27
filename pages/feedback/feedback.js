@@ -1,5 +1,5 @@
 // pages/feedback/feedback.js
-var add_feedback_url = 'https://wetech.top:7443/petcage/add_feedback';
+var add_feedback_url = 'https://pipilong.pet:7443/petcage/add_feedback';
 const app = getApp();
 
 Page({
