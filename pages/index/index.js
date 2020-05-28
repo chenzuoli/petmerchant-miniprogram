@@ -14,6 +14,16 @@ Page({
   onLoad: function (options) {
 
   },
+  user_index: function() {
+    wx.navigateTo({
+      url: '../user_index/index/index',
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
   analysis: function(){
     wx.navigateTo({
       url: '../analysis/analysis/analysis',

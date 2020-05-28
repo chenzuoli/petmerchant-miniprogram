@@ -1,6 +1,5 @@
 const app = getApp();
 
-var get_version_url = 'https://pipilong.pet:7443/petcage/get_app_version'
 var get_service_content = 'https://pipilong.pet:7443/petcage/get_service_content'
 var get_private_content = 'https://pipilong.pet:7443/petcage/get_private_content'
 
@@ -8,6 +7,7 @@ Page({
     data: {
         StatusBar: app.globalData.StatusBar,
         CustomBar: app.globalData.CustomBar,
+        login_user: "未登录状态",
         iconList: [{
             icon: 'cardboardfill',
             color: 'red',
@@ -61,30 +61,17 @@ Page({
         }],
         gridCol: 3,
         skin: false,
-        version: "1.0.0",
         service_content: "",
         private_content: ""
     },
-    onLoad() {
+    onLoad: function () {
         var that = this
-        var reqTask = wx.request({
-            url: get_version_url,
-            data: {},
-            header: { 'content-type': 'application/json' },
-            method: 'post',
-            dataType: 'json',
-            responseType: 'text',
-            success: (result) => {
-                that.setData({
-                    version: result.data.data
-                })
-            },
-            fail: (err) => {
-                console.log("请求获取app版本号失败")
-                console.log(err)
-            },
-            complete: () => { }
-        });
+        let phone = wx.getStorageSync("phone");
+        if (phone != '') {
+            that.setData({
+                login_user: phone
+            })
+        }
     },
     showModal(e) {
         this.setData({
@@ -156,31 +143,33 @@ Page({
             ListTouchDirection: null
         })
     },
+    login: function () {
+        var that = this
+        if (that.data.login_user != '未登录状态') {
+            return
+        }
+        wx.showModal({
+            title: '你还没登录',
+            content: '登录后才能看到宠笼分析数据',
+            showCancel: true,
+            cancelText: '暂不登录',
+            cancelColor: '#000000',
+            confirmText: '立即登录',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+                if (result.confirm) {
+                    wx.navigateTo({
+                        url: '../../login/login',
+                        success: (result) => {
 
-    update_user_info: function () {
-        wx.navigateTo({
-            url: '../info/index',
-            success: (result)=>{
-                console.log("跳转修改用户信息页面成功")
+                        },
+                        fail: () => { },
+                        complete: () => { }
+                    });
+                }
             },
-            fail: (err)=>{
-                console.log("跳转修改用户信息页面失败")
-                console.log(err)
-            },
-            complete: ()=>{}
-        });
-    },
-    update_pet_info: function () {
-        wx.navigateTo({
-            url: '/pages/pet_index/pet_list/pet_list',
-            success: (result)=>{
-                console.log("跳转宠物信息列表页面成功")
-            },
-            fail: (err)=>{
-                console.log("跳转宠物信息列表页面失败")
-                console.log(err)
-            },
-            complete: ()=>{}
+            fail: () => { },
+            complete: () => { }
         });
     },
     service_protocol: async function () {
